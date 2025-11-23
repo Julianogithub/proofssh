@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Chests</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <h1>Chests</h1>
+    <a th:href="@{/chests/novo}">Novo Chest </a> |
+    <a th:href="@{/heads}"> Hear </a> | 
+    <a th:href="@{/necks}"> Nick </a>
+     <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+
+        <tr th:each="c : ${chests}" th:if="${c != null}">
+            <td th:text="${c?.id}"></td>
+            <td th:text="${c?.nome}"></td>
+            <td>
+                <a th:href="@{/chests/editar/{id}(id=${c?.id})}">Editar</a> |
+                <a th:href="@{/chests/excluir/{id}(id=${c?.id})}">Excluir</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.proofssd.model.Chest;
 import com.proofssd.model.Neck;
+import com.proofssd.service.ChestService;
 import com.proofssd.service.NeckService;
 
 @Controller
@@ -18,6 +20,8 @@ public class NeckController {
 
 	@Autowired
 	private NeckService neckService;
+	@Autowired
+	ChestService chestService;
 
 	@GetMapping
 	public String listar(Model model) {
@@ -28,11 +32,16 @@ public class NeckController {
 	@GetMapping("/novo")
 	public String novoNeck(Model model) {
 		model.addAttribute("neck", new Neck());
+		model.addAttribute("chests", chestService.findAll());
 		return "necks/form";
 	}
 
 	@PostMapping
 	public String salvar(@ModelAttribute Neck neck) {
+		if (neck.getChest() != null && neck.getChest().getId() != null) {
+			Chest chest = chestService.findById(neck.getChest().getId());
+			neck.setChest(chest);
+		}
 		neckService.save(neck);
 		return "redirect:/necks";
 	}
@@ -40,6 +49,7 @@ public class NeckController {
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable Long id, Model model) {
 		model.addAttribute("neck", neckService.findById(id));
+		model.addAttribute("chests", chestService.findAll());
 		return "necks/form";
 	}
 

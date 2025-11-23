@@ -5,7 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,6 +22,10 @@ public class Neck {
 
     public Neck() {}
     
+    @ManyToOne
+    @JoinColumn(name = "chest_id")
+    private Chest chest;
+        
     public Neck(String nome) {
         this.nome = nome;
     }
@@ -29,5 +34,8 @@ public class Neck {
     public void setId(Long id) { this.id = id; }
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
+    //	Junção de tabelas * 1 Para 1 *
+    public Chest getChest() {return chest;}
+	public void setChest(Chest chest) { this.chest = chest;}
 
 }

@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 @Entity
 @Table(name = "heads")
@@ -21,7 +21,7 @@ public class Head {
 
     private Double preco;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "neck_id")
     private Neck neck;
 
@@ -38,6 +38,7 @@ public class Head {
     public void setNome(String nome) { this.nome = nome; }
     public Double getPreco() { return preco; }
     public void setPreco(Double preco) { this.preco = preco; }
+    //	Junção de tabelas * 1 Para 1 *
     public Neck getNeck() { return neck; }
     public void setNeck(Neck neck) { this.neck = neck; }
 }
