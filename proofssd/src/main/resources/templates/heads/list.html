@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Heads</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <h1>Heads</h1>
+    <a th:href="@{/heads/novo}">Novo Head</a> |
+    <a th:href="@{/necks}">Neck</a>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Neck</th>
+            <th>Ações</th>
+        </tr>
+        <tr th:each="h : ${heads}">
+            <td th:text="${h.id}"></td>
+            <td th:text="${h.nome}"></td>
+            <td th:text="${h.preco}"></td>
+            <td th:text="${h.neck.nome}"></td>
+            <td>
+                <a th:href="@{/heads/editar/{id}(id=${h.id})}">Editar</a> |
+                <a th:href="@{/heads/excluir/{id}(id=${h.id})}">Excluir</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
