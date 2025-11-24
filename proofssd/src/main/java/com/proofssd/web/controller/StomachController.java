@@ -1,0 +1,61 @@
+package com.proofssd.web.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.proofssd.model.Hip;
+import com.proofssd.model.Stomach;
+import com.proofssd.service.HipService;
+import com.proofssd.service.StomachService;
+
+@Controller
+@RequestMapping("/stomachs")            // <- plural: /stomachs
+public class StomachController {
+
+    @Autowired
+    private StomachService stomachService;
+    @Autowired
+    private HipService hipService;
+
+    @GetMapping
+    public String listar(Model model) {
+        model.addAttribute("stomachs", stomachService.findAll()); // lista como "stomachs"
+        return "stomachs/list";                                 // view: stomachs/list.html
+    }
+
+    @GetMapping("/novo")
+    public String novoStomach(Model model) {
+        model.addAttribute("stomach", new Stomach()); 
+        model.addAttribute("hips", hipService.findAll());// item único como "stomach" para o form
+        return "stomachs/form";                                 // view: stomachs/form.html
+    }
+
+    @PostMapping
+    public String salvar(@ModelAttribute Stomach stomach) {
+    	if (stomach.getHip() != null && stomach.getHip().getId() != null) {
+			Hip hip = hipService.findById(stomach.getHip().getId());
+			stomach.setHip(hip);
+		}
+    	stomachService.save(stomach);
+        return "redirect:/stomachs";                            // redireciona para /stomachs
+    }
+
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable Long id, Model model) {
+        model.addAttribute("stomach", stomachService.findById(id));
+        model.addAttribute("hips", hipService.findAll());// item único como "stomach" para o form
+        return "stomachs/form";                                 // corrige para stomachs/form
+    }
+
+    @GetMapping("/excluir/{id}")
+    public String excluir(@PathVariable Long id) {
+        stomachService.delete(id);
+        return "redirect:/stomachs";
+    }
+}

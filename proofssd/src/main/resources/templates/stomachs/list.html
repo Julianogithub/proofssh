@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<title>Stomachs</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<h1>Stomachs</h1>
+	<div th:replace="fragments/link :: navbar"></div>
+	<a th:href="@{/stomachs/novo}"> CADASTRO </a> |
+	<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Hip</th>
+			<th>Ações</th>
+		</tr>
+
+		<tr th:each="s : ${stomachs}" th:if="${s != null}">
+			<td th:text="${s?.id}"></td>
+			<td th:text="${s?.nome}"></td>
+			<td th:text="${s?.hip.nome}"></td>
+			<td><a th:href="@{/stomachs/editar/{id}(id=${s?.id})}">Editar</a>
+				| <a th:href="@{/stomachs/excluir/{id}(id=${s?.id})}">Excluir</a></td>
+		</tr>
+	</table>
+</body>
+</html>
