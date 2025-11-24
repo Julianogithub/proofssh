@@ -3,32 +3,30 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Chests</title>
+    <title>Arms</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
-    <h1>Chests</h1>
-    <a th:href="@{/chests/novo}"> CADASTRO </a> |
+    <h1>Arms</h1>
+    <a th:href="@{/arms/novo}">CADASTRO </a> |
     <a th:href="@{/heads}"> Hear </a> | 
     <a th:href="@{/necks}"> Nick </a> |
-    <a th:href="@{/chests}">Chest </a> |
-    <a th:href="@{/arms}"> Arm </a>
+    <a th:href="@{/chests}"> Chest </a> |
+    <a th:href="@{/arms}"> Arm </a> |
      <table border="1">
         <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Arm</th>
             <th>Ações</th>
         </tr>
 
-        <tr th:each="c : ${chests}" th:if="${c != null}">
+        <tr th:each="c : ${arms}" th:if="${c != null}">
             <td th:text="${c?.id}"></td>
             <td th:text="${c?.nome}"></td>
-            <td th:text="${c?.arm.nome}"></td>
             <td>
-                <a th:href="@{/chests/editar/{id}(id=${c?.id})}">Editar</a> |
-                <a th:href="@{/chests/excluir/{id}(id=${c?.id})}">Excluir</a>
+                <a th:href="@{/arms/editar/{id}(id=${c?.id})}">Editar</a> |
+                <a th:href="@{/arms/excluir/{id}(id=${c?.id})}">Excluir</a>
             </td>
         </tr>
     </table>

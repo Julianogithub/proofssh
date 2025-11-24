@@ -9,8 +9,9 @@ public class ProofssdApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProofssdApplication.class, args);
 		
-		System.out.println("✔️ Lista limpa e organizada\n" + "\t✔️ Cabeça\n" + "\t✔️ Pescoço\n" + "\tPeitoral\n" + "\tBraço\n"
-				+ "\tBarriga\n" + "\tQuadril\n" + "\tCoxa\n" + "\tPerna\n" + "\tPé");
+		System.out.println("✔️ Lista limpa e organizada\n" + "\t✔️ Cabeça = Head\n" + "\t✔️ Pescoço = Nick\n" 
+							+ "\t✔️ Peitoral = chest\n" + "\t✔️ Braço = Arm\n" + "\tBarriga = stomach\n" 
+							+ "\tQuadril = hip\n" + "\tCoxa = thigh\n" + "\tPerna = leg\n" + "\tPé = foot");
 		System.err.println("\n\tSystema Rodando");
 	}
 

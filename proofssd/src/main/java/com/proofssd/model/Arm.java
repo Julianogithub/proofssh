@@ -5,27 +5,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "chest")
-public class Chest {
+@Table(name = "arm")
+public class Arm {
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
 	    @Column(nullable = false)
 	    private String nome;
+
+	    public Arm() {}
 	    
-	    @ManyToOne
-	    @JoinColumn(name = "arm_id")
-	    private Arm arm;
-	    
-	    public Chest() {}
-	    
-	    public Chest(String nome) {
+	    public Arm(String nome) {
 	        this.nome = nome;
 	    }
 
@@ -33,7 +27,5 @@ public class Chest {
 	    public void setId(Long id) { this.id = id; }
 	    public String getNome() { return nome; }
 	    public void setNome(String nome) { this.nome = nome; }
-	    //	Junção de tabelas * Muitos Para 1 *
-		public Arm getArm() {return arm;}
-		public void setArm(Arm arm) {this.arm = arm;}	    
+
 }

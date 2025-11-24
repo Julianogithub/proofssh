@@ -34,7 +34,7 @@ public class Neck {
     public void setId(Long id) { this.id = id; }
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
-    //	Junção de tabelas * 1 Para 1 *
+    //	Junção de tabelas * Muitos Para 1 *
     public Chest getChest() {return chest;}
 	public void setChest(Chest chest) { this.chest = chest;}
 
