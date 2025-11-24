@@ -1,26 +1,26 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <meta charset="UTF-8" />
-<title>Cadastro de Chest</title>
+<title>Cadastro de Hip</title>
 <link rel="stylesheet" th:href="@{/css/styleNovo.css}">
 </head>
 
 <body>
-	<h1>Cadastro de Chest</h1>
-	<form th:action="@{/chests}" th:object="${chest}" method="post">
+	<h1>Cadastro de Hip</h1>
+	<form th:action="@{/hips}" th:object="${hip}" method="post">
 		<input type="hidden" th:field="*{id}"> <label>Nome:</label> <input
 			type="text" th:field="*{nome}"><br>
 		<br>		
-		<select th:field="*{arm.id}">
+		<select th:field="*{thigh.id}">
 			<option value="">Selecione</option>
-			<option th:each="a : ${arms}" th:value="${a.id}" th:text="${a.nome}"></option>
+			<option th:each="a : ${thighs}" th:value="${a.id}" th:text="${a.nome}"></option>
 		</select><br> <br>
 		
 		<button type="submit">Salvar</button>
 	</form>
-	<a th:href="@{/chests}">Voltar</a>
+	<a th:href="@{/hips}">Voltar</a>
 </body>
 </html>
-
