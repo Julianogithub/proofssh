@@ -2,37 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Lista de Heads</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+<meta charset="UTF-8">
+<title>Lista de Heads</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
-    <h1>Heads</h1>
-    <a th:href="@{/heads/novo}"> CADASTRO </a> |
-    <a th:href="@{/heads}"> Head </a> |
-    <a th:href="@{/necks}"> Neck </a> | 
-    <a th:href="@{/chests}"> Chest </a> |
-    <a th:href="@{/arms}"> Arm </a>
-
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Preço</th>
-            <th>Neck</th>
-            <th>Ações</th>
-        </tr>
-        <tr th:each="h : ${heads}">
-            <td th:text="${h.id}"></td>
-            <td th:text="${h.nome}"></td>
-            <td th:text="${h.preco}"></td>
-            <td th:text="${h.neck.nome}"></td>
-            <td>
-                <a th:href="@{/heads/editar/{id}(id=${h.id})}">Editar</a> |
-                <a th:href="@{/heads/excluir/{id}(id=${h.id})}">Excluir</a>
-            </td>
-        </tr>
-    </table>
+	<h1>Heads</h1>
+	<div th:replace="fragments/link :: navbar"></div>
+	<a th:href="@{/heads/novo}"> CADASTRO </a>
+	<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Preço</th>
+			<th>Neck</th>
+			<th>Ações</th>
+		</tr>
+		<tr th:each="h : ${heads}">
+			<td th:text="${h.id}"></td>
+			<td th:text="${h.nome}"></td>
+			<td th:text="${h.preco}"></td>
+			<td th:text="${h.neck.nome}"></td>
+			<td><a th:href="@{/heads/editar/{id}(id=${h.id})}">Editar</a> |
+				<a th:href="@{/heads/excluir/{id}(id=${h.id})}">Excluir</a></td>
+		</tr>
+	</table>
 </body>
 </html>

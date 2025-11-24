@@ -2,35 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Necks</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+<meta charset="UTF-8" />
+<title>Necks</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
-    <h1>Necks</h1>
-    <a th:href="@{/necks/novo}"> CADASTRO </a> |
-    <a th:href="@{/heads}"> Hear </a> |
-    <a th:href="@{/necks}"> Neck </a> |
-    <a th:href="@{/chests}"> Chest </a>|
-    <a th:href="@{/arms}"> Arm </a>
-    
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Chest</th>
-            <th>Ações</th>
-        </tr>
-        <tr th:each="n : ${necks}">
-            <td th:text="${n.id}"></td>
-            <td th:text="${n.nome}"></td>
-            <td th:text="${n.chest?.nome}">Sem Registro</td>
-            <td>
-                <a th:href="@{/necks/editar/{id}(id=${n.id})}">Editar</a> |
-                <a th:href="@{/necks/excluir/{id}(id=${n.id})}">Excluir</a>
-            </td>
-        </tr>
-    </table>
+	<h1>Necks</h1>
+	<div th:replace="fragments/link :: navbar"></div>
+	<a th:href="@{/necks/novo}"> CADASTRO </a>
+	<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Chest</th>
+			<th>Ações</th>
+		</tr>
+		<tr th:each="n : ${necks}">
+			<td th:text="${n.id}"></td>
+			<td th:text="${n.nome}"></td>
+			<td th:text="${n.chest?.nome}">Sem Registro</td>
+			<td><a th:href="@{/necks/editar/{id}(id=${n.id})}">Editar</a> |
+				<a th:href="@{/necks/excluir/{id}(id=${n.id})}">Excluir</a></td>
+		</tr>
+	</table>
 </body>
 </html>
