@@ -11,7 +11,7 @@ public class ProofssdApplication {
 		
 		System.out.println("✔️ Lista limpa e organizada\n" + "\t✔️ Cabeça = Head\n" + "\t✔️ Pescoço = Nick\n" 
 							+ "\t✔️ Peitoral = chest\n" + "\t✔️ Braço = Arm\n" + "\tBarriga = stomach\n" 
-							+ "\tQuadril = hip\n" + "\tCoxa = thigh\n" + "\tPerna = leg\n" + "\tPé = foot");
+							+ "\tQuadril = hip\n" + "\tCoxa = thigh\n" + "\t✔️ Perna = leg\n" + "\tPé = foot");
 		System.err.println("\n\tSystema Rodando");
 	}
 
