@@ -10,10 +10,18 @@
 <body>
 	<h1>Cadastro de Arm</h1>
 	<form th:action="@{/arms}" th:object="${arm}" method="post">
-		<input type="hidden" th:field="*{id}"> <label>Nome:</label> <input
-			type="text" th:field="*{nome}"><br>
-		<br>		
-		
+		<input type="hidden" th:field="*{id}"> 
+		<label>Nome:</label> 
+		<input			type="text" th:field="*{nome}"> <br>
+		<br
+		> <label>Stomach:</label> 
+		<select th:field="*{stomach.id}">
+			<option value="">Selecione</option>
+			<option th:each="c : ${stomachs}" 
+			th:value="${c.id}"
+			th:text="${c.nome}"></option>
+		</select> <br>
+		<br>
 		<button type="submit">Salvar</button>
 	</form>
 	<a th:href="@{/arms}">Voltar</a>
