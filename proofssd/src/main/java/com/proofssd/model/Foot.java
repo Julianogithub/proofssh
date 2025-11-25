@@ -5,27 +5,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "leg")
-public class Leg {
+@Table(name = "foot")
+public class Foot {
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
 	    @Column(nullable = false)
 	    private String nome;
+
+	    public Foot() {}
 	    
-	    @ManyToOne
-	    @JoinColumn(name = "foot_id")
-	    private Foot foot;
-	    
-	    public Leg() {}
-	    
-	    public Leg(String nome) {
+	    public Foot(String nome) {
 	        this.nome = nome;
 	    }
 
@@ -33,7 +27,5 @@ public class Leg {
 	    public void setId(Long id) { this.id = id; }
 	    public String getNome() { return nome; }
 	    public void setNome(String nome) { this.nome = nome; }
-	    //	Junção de tabelas * Muitos Para 1 *
-		public Foot getFoot() {return foot;}
-		public void setFoot(Foot foot) {this.foot = foot;}	    
+
 }

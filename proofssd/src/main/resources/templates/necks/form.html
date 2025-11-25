@@ -10,18 +10,13 @@
 <body>
 	<h1>Cadastro de Neck</h1>
 	<form th:action="@{/necks}" th:object="${neck}" method="post">
-		<input type="hidden" th:field="*{id}"> 
-		<label>Nome:</label> 
-		<input			type="text" th:field="*{nome}"> <br>
-		<br
-		> <label>Chest:</label> 
+		<input type="hidden" th:field="*{id}"> <label>Nome:</label> <input
+			type="text" th:field="*{nome}"> <br> <br> <label>Chest:</label>
 		<select th:field="*{chest.id}">
 			<option value="">Selecione</option>
-			<option th:each="c : ${chests}" 
-			th:value="${c.id}"
-			th:text="${c.nome}"></option>
-		</select> <br>
-		<br>
+			<option th:each="c : ${chests}" th:value="${c.id}"
+				th:text="${c.nome}"></option>
+		</select> <br> <br>
 		<button type="submit">Salvar</button>
 	</form>
 	<a th:href="@{/necks}">Voltar</a>

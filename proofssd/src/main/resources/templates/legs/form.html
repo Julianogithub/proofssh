@@ -13,9 +13,14 @@
 		<input type="hidden" th:field="*{id}"> <label>Nome:</label> <input
 			type="text" th:field="*{nome}"><br>
 		<br>		
+		<select th:field="*{foot.id}">
+			<option value="">Selecione</option>
+			<option th:each="f : ${foots}" th:value="${f.id}" th:text="${f.nome}"></option>
+		</select><br> <br>
 		
 		<button type="submit">Salvar</button>
 	</form>
 	<a th:href="@{/legs}">Voltar</a>
 </body>
 </html>
+

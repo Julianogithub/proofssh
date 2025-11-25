@@ -15,7 +15,7 @@
 		<br>		
 		<select th:field="*{leg.id}">
 			<option value="">Selecione</option>
-			<option th:each="a : ${legs}" th:value="${a.id}" th:text="${a.nome}"></option>
+			<option th:each="l : ${legs}" th:value="${l.id}" th:text="${l.nome}"></option>
 		</select><br> <br>
 		
 		<button type="submit">Salvar</button>

@@ -10,19 +10,21 @@
 <body>
 	<h1>Legs</h1>
 	<div th:replace="fragments/link :: navbar"></div>
-	<a th:href="@{/legs/novo}"> CADASTRO </a>
+	<a th:href="@{/legs/novo}"> CADASTRO </a> |
 	<table border="1">
 		<tr>
 			<th>ID</th>
 			<th>Nome</th>
+			<th>Foot</th>
 			<th>Ações</th>
 		</tr>
 
-		<tr th:each="c : ${legs}" th:if="${c != null}">
-			<td th:text="${c?.id}"></td>
-			<td th:text="${c?.nome}"></td>
-			<td><a th:href="@{/legs/editar/{id}(id=${c?.id})}">Editar</a> |
-				<a th:href="@{/legs/excluir/{id}(id=${c?.id})}">Excluir</a></td>
+		<tr th:each="l : ${legs}" th:if="${l != null}">
+			<td th:text="${l?.id}"></td>
+			<td th:text="${l?.nome}"></td>
+			<td th:text="${l?.foot.nome}"></td>
+			<td><a th:href="@{/legs/editar/{id}(id=${l?.id})}">Editar</a>
+				| <a th:href="@{/legs/excluir/{id}(id=${l?.id})}">Excluir</a></td>
 		</tr>
 	</table>
 </body>
